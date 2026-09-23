@@ -28,6 +28,7 @@ def build_agent():
             "State clearly when data is unavailable; do not invent values.",
         ],
         add_datetime_to_context=True,
+        debug_mode = True
     )
 
 groq_agent = build_agent()
