@@ -11,8 +11,8 @@ load_dotenv()
 
 db = SqliteDb(db_file = "agno2.db")
 db.clear_memories()
-
-youtube_agent= Agent(
+def build_yt_agent():
+    return Agent(
     model=Groq(id="openai/gpt-oss-120b"),
     tools = [YouTubeTools()],
     db = db,
@@ -31,7 +31,8 @@ youtube_agent= Agent(
         "If the user asks a specific question about the video instead of a general summary, answer using the transcript content directly rather than producing a full summary.",
         "Always mention the video title and channel name at the start of your response.",
     ]
-)
+)  
 
 
-youtube_agent.print_response("Summarize this video: https://www.youtube.com/watch?v=sBqrw-Ehhc0", stream = True)
+
+# youtube_agent.print_response("Summarize this video: https://www.youtube.com/watch?v=sBqrw-Ehhc0", stream = True)
