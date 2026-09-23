@@ -2,7 +2,7 @@ from agno.agent import Agent
 from agno.models.groq import Groq
 from agno.db.sqlite import SqliteDb
 from dotenv import load_dotenv
-
+from rich.pretty import pprint
 
 load_dotenv()
 
@@ -15,9 +15,14 @@ def build_agent():
         db = db,
         markdown=True,
         add_history_to_context = True,
+        update_memory_on_run=True
     )
 
 agent = build_agent()
 
-agent.print_response("What is the capital of Nepal?")
-agent.print_response("What is the best month to vist it?")
+user_id = "samir@gmail.com"
+agent.print_response("My name is Samir, and I am a software engineer and AI engineer and I live in helsinki.", user_id = user_id)
+agent.print_response("Who I am?", user_id = user_id)
+
+memorires = agent.get_user_memories(user_id = user_id)
+print("Memories: \n", memorires)
