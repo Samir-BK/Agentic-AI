@@ -3,3 +3,4 @@ youtube_transcript_api
 groq
 python-dotenv
 streamlit
+sqlalchemy
